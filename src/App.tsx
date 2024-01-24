@@ -4,9 +4,9 @@ import { Outlet } from 'react-router-dom';
 function App() {
   return (
     <div className="container-app">
-      <header>
+      <div className='header-app'>
         <h1>Activity Money $$</h1>
-      </header>
+      </div>
       <Outlet />
     </div>
   );

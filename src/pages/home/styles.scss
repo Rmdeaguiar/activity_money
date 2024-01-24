@@ -4,12 +4,21 @@
     background-color: $color-primary;
     min-height: 100vh;
     padding: 30px 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
 
     .cards-home {
         display: flex;
         justify-content: center;
         align-items: center;
         gap: 30px;
+        width: 100%;
+    }
+
+    .table-home {
+        width: 100%;
     }
 
 }

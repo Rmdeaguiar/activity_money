@@ -1,6 +1,7 @@
 import React from 'react';
 import './styles.scss';
 import IncomeCard from '../../components/IncomeCard';
+import TableCard from '../../components/TableCard';
 
 function Home() {
   return (
@@ -18,6 +19,9 @@ function Home() {
           title='Total'
           value={50}
         />
+      </div>
+      <div className='table-home'>
+        <TableCard />
       </div>
     </div>
   );

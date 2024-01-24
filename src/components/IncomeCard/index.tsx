@@ -1,6 +1,5 @@
 import './styles.scss';
 
-
 type IncomeCardProps = {
   title: string,
   value: number

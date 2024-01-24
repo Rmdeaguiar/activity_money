@@ -1,0 +1,40 @@
+@import "../../styles/variables.scss";
+
+.table-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+
+    .header-table, .main-table {
+        display: flex;
+        width: 90%;
+        background: $color-primary;
+        border: 2px solid;
+        border-image: linear-gradient(to right, green, red, aqua);
+        border-image-slice: 1;
+ 
+   
+        h2 {
+            text-align: start;
+            width: 33%;
+            padding: 8px;
+            font-weight: 500;       
+            color: silver;
+        }
+    }
+    .main-table {
+
+        border: 1px solid green;
+      
+        h3 {
+            text-align: start;
+            width: 33%;
+            padding: 8px;
+            font-weight: 300;       
+            color: gray;
+        }
+
+    }
+}

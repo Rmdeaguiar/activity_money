@@ -1,11 +1,15 @@
-import React from 'react';
 import './styles.scss';
+import { useState } from 'react';
 import IncomeCard from '../../components/IncomeCard';
 import TableCard from '../../components/TableCard';
+import ModalTransaction from '../../components/ModalTransaction';
 
 function Home() {
+  const [modal, setModal] = useState(false);
+
   return (
     <div className="container-home">
+      <button onClick={() => setModal(true)}>Nova transação</button>
       <div className='cards-home'>
         <IncomeCard
           title='Entradas'
@@ -23,6 +27,12 @@ function Home() {
       <div className='table-home'>
         <TableCard />
       </div>
+      {modal &&
+        <ModalTransaction
+          modal={modal}
+          setModal={setModal}
+        />
+      }
     </div>
   );
 }

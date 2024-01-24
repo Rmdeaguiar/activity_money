@@ -9,6 +9,25 @@
     align-items: center;
     gap: 30px;
 
+    button {
+        cursor: pointer;
+        padding: 15px;
+        border-radius: 15px;
+        border: none;
+        background-color: $color-primary;
+        color: #FFF;
+        position: fixed;
+        right: 30px;
+        top: 30px;
+        opacity: 0.7;
+        border: 1px solid silver;
+
+        &:hover{
+            transition: all 500ms;
+            opacity: 0.3;
+        }
+    }
+
     .cards-home {
         display: flex;
         justify-content: center;

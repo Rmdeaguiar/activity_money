@@ -4,16 +4,16 @@ function TableCard() {
 
   return (
     <div className="table-card">
-      <div className='header-table'>
-        <h2>Título</h2>
-        <h2>Valor</h2>
-        <h2>Data</h2>
-      </div>
-      <div className='main-table'>
-        <h3>Entrada</h3>
-        <h3>{(200000).toLocaleString('pt-BR', {style:'currency', currency: 'BRL'})}</h3>
-        <h3>24/01/2024</h3>
-      </div>
+      <thead className='header-table'>
+        <th>Título</th>
+        <th>Valor</th>
+        <th>Data</th>
+      </thead>
+      <tbody className='main-table'>
+          <tr>Entrada</tr>
+          <tr>{(200000).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</tr>
+          <tr>24/01/2024</tr>
+      </tbody>
     </div>
   );
 }

@@ -16,11 +16,12 @@
         border-image-slice: 1;
  
    
-        h2 {
+        th {
             text-align: start;
             width: 33%;
             padding: 8px;
-            font-weight: 500;       
+            font-weight: 700;
+            font-size: 20px;       
             color: silver;
         }
     }
@@ -28,7 +29,7 @@
 
         border: 1px solid green;
       
-        h3 {
+        tr {
             text-align: start;
             width: 33%;
             padding: 8px;

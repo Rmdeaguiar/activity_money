@@ -1,0 +1,73 @@
+@import "../../styles/variables.scss";
+
+@keyframes appear {
+    from {opacity: 0;}
+    to{opacity: 1;}
+  }
+
+.container-modal {
+    background: linear-gradient(90deg, silver, gray);
+    position: fixed;
+    width: 40vw;
+    top: 50px;
+    border-radius: 50px;
+    opacity: 0.95;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: 20px 30px;
+    animation-name: appear;
+    animation-duration: 1s;
+
+    .close-icon {
+        position: absolute;
+        right: 45px;
+        cursor: pointer;
+
+        &:hover{
+            color:#FFF;
+            transition: all 500ms;
+        }
+    }
+
+    form {
+        margin: 15px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        width: 100%;
+
+        label {
+            font-weight: 500;
+        }
+
+        input {
+            height: 30px;
+            padding: 10px;
+            border: none;
+        }
+
+        .form-buttons{
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+
+            button {
+                margin-top: 10px;
+                position: relative;
+                top: 0px;
+                right: 0px;
+                border: none;
+                width: 40%;
+            }
+
+            .green-btn {
+                background-color: green;
+            }
+            .red-btn {
+                background-color: red;
+            }
+        }
+      
+    }
+}

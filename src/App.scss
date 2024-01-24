@@ -2,8 +2,11 @@
 
 .container-app {
     .header-app {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
         background: linear-gradient(90deg, $color-primary, #e3e6ff);
         color: silver;
-        padding: 20px;
+        padding: 25px 45px;
     }
 }

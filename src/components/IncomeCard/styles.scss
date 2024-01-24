@@ -1,0 +1,15 @@
+@import "../../styles/variables.scss";
+
+.income-card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 15px;
+    width: 30%;
+    height: 120px;
+    padding: 15px;
+    color: silver;
+    border: 2px rgb(192, 192, 192, 0.9) solid;
+    color: #FFF;
+}

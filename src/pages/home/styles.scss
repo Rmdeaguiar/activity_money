@@ -1,0 +1,15 @@
+@import "../../styles/variables.scss";
+
+.container-home {
+    background-color: $color-primary;
+    min-height: 100vh;
+    padding: 30px 10px;
+
+    .cards-home {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 30px;
+    }
+
+}

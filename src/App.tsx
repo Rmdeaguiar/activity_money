@@ -1,10 +1,13 @@
-import React from 'react';
-import './App.css';
+import './App.scss';
+import { Outlet } from 'react-router-dom';
 
 function App() {
   return (
-    <div className="App">
-      <h1>Hello World!</h1>
+    <div className="container-app">
+      <header>
+        <h1>Activity Money $$</h1>
+      </header>
+      <Outlet />
     </div>
   );
 }

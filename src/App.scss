@@ -1,0 +1,9 @@
+@import "./styles/variables.scss";
+
+.container-app {
+    header {
+        background: linear-gradient(90deg, $color-primary, #e3e6ff);
+        color: silver;
+        padding: 20px;
+    }
+}

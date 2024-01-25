@@ -9,6 +9,7 @@
 
     .header-table, .main-table {
         display: flex;
+        align-items: center;
         width: 90%;
         background: $color-primary;
         border: 2px solid;
@@ -18,7 +19,7 @@
    
         th {
             text-align: start;
-            width: 33%;
+            width: 32%;
             padding: 8px;
             font-weight: 700;
             font-size: 20px;       
@@ -31,7 +32,7 @@
       
         tr {
             text-align: start;
-            width: 33%;
+            width: 32%;
             padding: 8px;
             font-weight: 300;       
             color: gray;

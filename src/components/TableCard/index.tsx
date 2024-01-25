@@ -1,4 +1,5 @@
 import './styles.scss';
+import { FaTrashAlt } from "react-icons/fa";
 
 function TableCard() {
 
@@ -13,6 +14,7 @@ function TableCard() {
           <tr>Entrada</tr>
           <tr>{(200000).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</tr>
           <tr>24/01/2024</tr>
+          <FaTrashAlt size={15} color='silver' cursor={'pointer'}/>
       </tbody>
     </div>
   );

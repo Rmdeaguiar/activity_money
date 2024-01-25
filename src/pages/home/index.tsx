@@ -29,6 +29,7 @@ function Home() {
       </div>
       {modal &&
         <ModalTransaction
+          modalType='Nova transação'
           modal={modal}
           setModal={setModal}
         />

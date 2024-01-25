@@ -29,6 +29,7 @@
     .main-table {
 
         border: 1px solid green;
+        padding-right: 12px;
       
         tr {
             text-align: start;
@@ -36,6 +37,25 @@
             padding: 8px;
             font-weight: 300;       
             color: gray;
+        }
+
+        .table-icons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .table-icon {
+            color: silver;
+            cursor: pointer;
+
+            &:hover{
+                color: red;
+                transition: all 500ms;
+
+                &:first-child {
+                    color: aqua;
+                }
+            }
         }
 
     }

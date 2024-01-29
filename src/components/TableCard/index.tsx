@@ -3,8 +3,14 @@ import { FaTrashAlt } from "react-icons/fa";
 import { GoPencil } from "react-icons/go";
 import ModalTransaction from '../ModalTransaction';
 import { useState } from 'react';
+import { Transaction } from '../../types/Transaction';
+import {format} from 'date-fns';
 
-function TableCard() {
+interface TableCardProps {
+  transactions: Transaction[];
+}
+
+function TableCard({ transactions }: TableCardProps) {
 
   const [modal, setModal] = useState(false);
 
@@ -15,19 +21,22 @@ function TableCard() {
         <th>Valor</th>
         <th>Data</th>
       </thead>
-      <tbody className='main-table'>
-        <tr>Entrada</tr>
-        <tr>{(200000).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</tr>
-        <tr>24/01/2024</tr>
-        <div className='table-icons'>
-          <div className='table-icon'>
-            <GoPencil size={15} onClick={() => setModal(true)} />
-          </div>
-          <div className='table-icon'>
-            <FaTrashAlt size={15} />
+      {transactions.map((transaction: Transaction) => (
+        <div key={transaction.transaction_id} className='main-table'>
+          <tr>{(transaction.transaction_type).toLocaleUpperCase()}</tr>
+          <tr>{(transaction.transaction_value).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</tr>
+          <tr>{format(new Date(transaction.transaction_date), "dd/MM/yyyy")}</tr>
+          <div className='table-icons'>
+            <div className='table-icon'>
+              <GoPencil size={15} onClick={() => setModal(true)} />
+            </div>
+            <div className='table-icon'>
+              <FaTrashAlt size={15} />
+            </div>
           </div>
         </div>
-      </tbody>
+      ))}
+
       {modal &&
         <ModalTransaction
           modalType='Editar transação'

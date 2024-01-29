@@ -12,7 +12,7 @@ function IncomeCard({ title, value }: IncomeCardProps) {
   return (
     <div className="income-card" style={{ background: backgroundColor }}>
       <h2>{title}</h2>
-      <h3>R$ {value.toFixed(2)}</h3>
+      <h3>{value.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})}</h3>
     </div>
   );
 }

@@ -1,0 +1,61 @@
+@import "../../styles/variables.scss";
+
+.container-login {
+    background: linear-gradient(90deg, $color-primary, #e3e6ff);
+    min-height: 85vh;
+    padding: 0px 50px;
+    flex-direction: column;
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    color: silver;
+
+    h1{
+        margin-bottom: 30px;
+        font-size: 36px;
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+        background-color: $color-primary;
+        border-radius: 10px;
+        padding: 30px;
+        width: 20%;
+
+        label {
+            font-weight: 500;
+        }
+
+        input {
+            height: 30px;
+            padding: 10px;
+            border: none;
+            width: 100%;
+            background-color: silver;
+        }
+
+        button {
+            cursor: pointer;
+            background-color: lightblue;
+            border: none;
+            border-radius: 8px;
+            padding: 10px;
+            width: 100%;
+            margin-top: 10px;
+            font-weight: 700;
+            
+            &:hover{
+                opacity: 0.5;
+                transition: all 500ms;
+            }
+        }
+    }
+
+    a {
+        color: silver;
+        margin-top: 15px;
+    }
+}

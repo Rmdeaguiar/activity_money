@@ -3,5 +3,6 @@ export type Transaction = {
     transaction_date: string,
     transaction_type: string,
     transaction_value: number
+    transaction_title: string
   }
   

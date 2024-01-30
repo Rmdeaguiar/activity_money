@@ -1,15 +1,18 @@
 import './styles.scss';
 import { Dispatch, SetStateAction } from 'react';
 import { IoCloseCircleOutline } from "react-icons/io5";
-import { FormEvent, ChangeEvent, useState } from 'react';
+import { FormEvent, useState } from 'react';
+import api from '../../services/api';
+import { getItem } from '../../utils/storage';
 
 type ModalProps = {
-  modalType:string
+  modalType: string
   modal: boolean,
   setModal: Dispatch<SetStateAction<boolean>>
 }
 
 function ModalTransaction({ modalType, modal, setModal }: ModalProps) {
+  const token = getItem('token');
   const [title, setTitle] = useState('');
   const [amount, setAmount] = useState(0);
   const [date, setDate] = useState('');
@@ -17,6 +20,25 @@ function ModalTransaction({ modalType, modal, setModal }: ModalProps) {
 
   const handleTransaction = async (e: FormEvent) => {
     e.preventDefault();
+
+    if (modalType === 'Nova transação') {
+      const response = await api.post('/transaction', {
+        value: amount,
+        date,
+        type: selectedOption,
+        title
+      },{
+        headers: {
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': '*'
+        }
+      });
+
+    } else {
+
+    }
+
   }
 
   const handleClearForm = () => {
@@ -41,9 +63,9 @@ function ModalTransaction({ modalType, modal, setModal }: ModalProps) {
         <input name='date' type='date' value={date} onChange={(e) => setDate(e.target.value)} />
         <div className='form-check'>
           <label htmlFor='type-income'>Entrada</label>
-          <input name='type-income' value='entrada' type='radio' checked={selectedOption === 'entrada'} onChange={(e)=>setSelectedOption(e.target.value)} />
+          <input name='type-income' value='entrada' type='radio' checked={selectedOption === 'entrada'} onChange={(e) => setSelectedOption(e.target.value)} />
           <label htmlFor='type-income'>Saída</label>
-          <input name='type-income' value='saída' type='radio' checked={selectedOption === 'saída'} onChange={(e)=>setSelectedOption(e.target.value)} />
+          <input name='type-income' value='saída' type='radio' checked={selectedOption === 'saída'} onChange={(e) => setSelectedOption(e.target.value)} />
         </div>
         <div className='form-buttons'>
           <button className='green-btn'>Confirmar</button>

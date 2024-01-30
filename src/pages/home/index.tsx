@@ -49,10 +49,8 @@ function Home() {
       setCredit(creditTotal);
       setDebit(debitTotal);
     }
-
     loadIncome();
-
-  }, []);
+  }, [modal]);
 
 
   return (

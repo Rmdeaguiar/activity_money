@@ -1,0 +1,49 @@
+.container-delete {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    background-color: gray;
+    border-radius: 15px;
+    padding: 12px;
+    gap:10px;
+
+    h3 {
+        font-size: 16px;
+    }
+
+    .remove-btn {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        gap: 10px;
+
+
+        button {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            top: 0;
+            right: 0;
+            font-size: 13px;
+            width: 100%;
+
+        }
+    }
+
+
+
+    .green {
+        background-color: green;
+    }
+
+    .red {
+        background-color: red;
+        
+    }
+
+}

@@ -1,42 +1,71 @@
 import './styles.scss';
 import { Dispatch, SetStateAction } from 'react';
 import { IoCloseCircleOutline } from "react-icons/io5";
-import { FormEvent, useState } from 'react';
+import { FormEvent, useState, useEffect } from 'react';
 import api from '../../services/api';
 import { getItem } from '../../utils/storage';
+import { Transaction } from '../../types/Transaction';
+import { format } from 'date-fns'
 
 type ModalProps = {
   modalType: string
   modal: boolean,
+  transaction: Transaction
   setModal: Dispatch<SetStateAction<boolean>>
 }
 
-function ModalTransaction({ modalType, modal, setModal }: ModalProps) {
+function ModalTransaction({ modalType, modal, setModal, transaction }: ModalProps) {
   const token = getItem('token');
   const [title, setTitle] = useState('');
   const [amount, setAmount] = useState(0);
   const [date, setDate] = useState('');
   const [selectedOption, setSelectedOption] = useState('');
 
-  const handleTransaction = async (e: FormEvent) => {
-    e.preventDefault();
+  useEffect(() => {
+    if (modalType === 'Nova transação') {
+      handleClearForm();
+    } else {
+      const currentDate = new Date();
+      const formattedDate = currentDate.toISOString().split('T')[0];
+      setDate(formattedDate)
+      setAmount(transaction.transaction_value)
+      setTitle(transaction.transaction_title)
+      setSelectedOption(transaction.transaction_type);
+    }
+  }, []);
 
+  const handleTransaction = async (e: FormEvent) => {
+
+    e.preventDefault();
     if (modalType === 'Nova transação') {
       const response = await api.post('/transaction', {
         value: amount,
         date,
         type: selectedOption,
         title
-      },{
+      }, {
         headers: {
           'Authorization': `Bearer ${token}`,
           'Content-Type': 'application/json',
           'Access-Control-Allow-Origin': '*'
         }
       });
+      setModal(false);
 
     } else {
-
+      const response = await api.put(`transaction/${transaction?.transaction_id}`, {
+        value: amount,
+        date,
+        type: selectedOption,
+        title
+      }, {
+        headers: {
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': '*'
+        }
+      });
+      setModal(false);
     }
 
   }

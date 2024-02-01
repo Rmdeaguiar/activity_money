@@ -14,6 +14,7 @@ function Home() {
   const [credit, setCredit] = useState(0);
   const [debit, setDebit] = useState(0);
   const [transactions, setTransactions] = useState<Transaction[]>([])
+  const [transaction, setTransaction] = useState<Transaction>()
 
   useEffect(() => {
     async function loadIncome() {
@@ -73,8 +74,8 @@ function Home() {
           />
         </div>
         <div className='table-home'>
-          <TableCard 
-          transactions={transactions}
+          <TableCard
+            transactions={transactions}
           />
         </div>
         {modal &&
@@ -82,6 +83,13 @@ function Home() {
             modalType='Nova transação'
             modal={modal}
             setModal={setModal}
+            transaction={{
+              transaction_id: 0,
+              transaction_date: '',
+              transaction_title: '',
+              transaction_type: '',
+              transaction_value: 0
+            }}
           />
         }
       </div>

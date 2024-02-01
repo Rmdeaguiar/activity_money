@@ -1,13 +1,21 @@
+@keyframes appear {
+    from {opacity: 0;}
+    to{opacity: 1;}
+  }
+
 .container-delete {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    position: absolute;
+    position: fixed;
+    top: 300px;
     background-color: gray;
     border-radius: 15px;
     padding: 12px;
-    gap:10px;
+    gap:10px;   
+    animation-name: appear;
+    animation-duration: 1s;
 
     h3 {
         font-size: 16px;

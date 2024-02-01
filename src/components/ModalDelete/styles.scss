@@ -8,17 +8,16 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    position: fixed;
-    top: 300px;
+    position: absolute;
     background-color: gray;
     border-radius: 15px;
-    padding: 12px;
+    padding: 5px;
     gap:10px;   
     animation-name: appear;
     animation-duration: 1s;
 
     h3 {
-        font-size: 16px;
+        font-size: 10px;
     }
 
     .remove-btn {
@@ -26,7 +25,7 @@
         justify-content: center;
         align-items: center;
         position: relative;
-        gap: 10px;
+        gap: 8px;
 
 
         button {
@@ -37,9 +36,7 @@
             position: relative;
             top: 0;
             right: 0;
-            font-size: 13px;
-            width: 100%;
-
+            font-size: 8px;
         }
     }
 

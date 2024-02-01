@@ -5,15 +5,14 @@ import { getItem } from '../../utils/storage';
 
 type ModalDeleteProps = {
   modalIndex: number | null
-  modalDelete: boolean,
   setModalDelete: Dispatch<SetStateAction<boolean>>
 }
 
-function ModalDelete({ modalIndex, modalDelete, setModalDelete }: ModalDeleteProps) {
+function ModalDelete({ modalIndex, setModalDelete }: ModalDeleteProps) {
   const token = getItem('token');
 
-  const handleDeleteTransaction = async () => {
 
+  const handleDeleteTransaction = async () => {
     const response = await api.delete(`/transaction/${modalIndex}`,
       {
         headers: {

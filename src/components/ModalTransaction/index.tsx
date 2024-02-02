@@ -5,7 +5,7 @@ import { FormEvent, useState, useEffect } from 'react';
 import api from '../../services/api';
 import { getItem } from '../../utils/storage';
 import { Transaction } from '../../types/Transaction';
-import { format } from 'date-fns'
+import { useModal } from '../../stores/modalStore';
 
 type ModalProps = {
   modalType: string
@@ -14,7 +14,9 @@ type ModalProps = {
   setModal: Dispatch<SetStateAction<boolean>>
 }
 
-function ModalTransaction({ modalType, modal, setModal, transaction }: ModalProps) {
+function ModalTransaction({ modalType, transaction, setModal }: ModalProps) {
+  const { loadIncome } = useModal();
+
   const token = getItem('token');
   const [title, setTitle] = useState('');
   const [amount, setAmount] = useState(0);
@@ -25,7 +27,7 @@ function ModalTransaction({ modalType, modal, setModal, transaction }: ModalProp
     if (modalType === 'Nova transação') {
       handleClearForm();
     } else {
-      const currentDate = new Date();
+      const currentDate = new Date(transaction.transaction_date);
       const formattedDate = currentDate.toISOString().split('T')[0];
       setDate(formattedDate)
       setAmount(transaction.transaction_value)
@@ -66,6 +68,7 @@ function ModalTransaction({ modalType, modal, setModal, transaction }: ModalProp
         }
       });
       setModal(false);
+      loadIncome(token!);
     }
 
   }

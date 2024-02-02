@@ -3,13 +3,15 @@ import SignUp from './pages/signup';
 import Login from './pages/login';
 import { Routes, Route, Outlet, Navigate } from 'react-router-dom'
 import { getItem } from './utils/storage'
+import { StoresProvider } from './stores';
 
 interface ProtectedRoutesProps {
     redirectTo: string;
 }
 
 function ProtectedRoutes({ redirectTo }: ProtectedRoutesProps) {
-    const isAuthenticated = getItem('token');
+    //const isAuthenticated = getItem('token');
+    const isAuthenticated = true
     return isAuthenticated ? <Outlet /> : <Navigate to={redirectTo} />
 }
 
@@ -18,12 +20,11 @@ function MainRoutes() {
         <Routes>
             <Route path="/" element={<Login />} />
             <Route path="/signup" element={<SignUp />} />
-
+            
             <Route element={<ProtectedRoutes redirectTo='/' />}>
                 <Route path="/home" element={<Home />} />
             </Route>
         </Routes>
-
     );
 }
 

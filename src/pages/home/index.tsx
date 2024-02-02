@@ -7,51 +7,25 @@ import TableCard from '../../components/TableCard';
 import ModalTransaction from '../../components/ModalTransaction';
 import Header from '../../components/Header';
 import { Transaction } from '../../types/Transaction';
+import { useModal } from '../../stores/modalStore';
+import { StoresProvider } from '../../stores';
+
+
 
 function Home() {
+
+  const { loadIncome, credit, debit, transactions } = useModal();
+
   const token = getItem('token');
   const [modal, setModal] = useState(false);
-  const [credit, setCredit] = useState(0);
-  const [debit, setDebit] = useState(0);
-  const [transactions, setTransactions] = useState<Transaction[]>([])
+  // const [credit, setCredit] = useState(0);
+  // const [debit, setDebit] = useState(0);
+  // const [transactions, setTransactions] = useState<Transaction[]>([])
   const [transaction, setTransaction] = useState<Transaction>()
 
   useEffect(() => {
-    async function loadIncome() {
-      const response = await api.get('/transactions', {
-        headers: {
-          'Authorization': `Bearer ${token}`,
-          'Content-Type': 'application/json',
-          'Access-Control-Allow-Origin': '*'
-        }
-      })
-
-      const localIncomes = response.data;
-      localIncomes.sort((a: Transaction, b: Transaction) => {
-        return new Date(b.transaction_date).getTime() - new Date(a.transaction_date).getTime();
-      });
-
-      setTransactions(localIncomes);
-
-      const creditTotal = localIncomes.reduce((total: number, transaction: Transaction) => {
-        if (transaction.transaction_type === 'entrada') {
-          return total + transaction.transaction_value;
-        }
-        return total;
-      }, 0);
-
-      const debitTotal = localIncomes.reduce((total: number, transaction: Transaction) => {
-        if (transaction.transaction_type === 'saída') {
-          return total + transaction.transaction_value;
-        }
-        return total;
-      }, 0);
-
-      setCredit(creditTotal);
-      setDebit(debitTotal);
-    }
-    loadIncome();
-  }, [modal]);
+    if(token) loadIncome(token!);
+  }, [transactions]);
 
 
   return (
@@ -79,18 +53,20 @@ function Home() {
           />
         </div>
         {modal &&
-          <ModalTransaction
-            modalType='Nova transação'
-            modal={modal}
-            setModal={setModal}
-            transaction={{
-              transaction_id: 0,
-              transaction_date: '',
-              transaction_title: '',
-              transaction_type: '',
-              transaction_value: 0
-            }}
-          />
+          <StoresProvider>
+            <ModalTransaction
+              modalType='Nova transação'
+              modal={modal}
+              setModal={setModal}
+              transaction={{
+                transaction_id: 0,
+                transaction_date: '',
+                transaction_title: '',
+                transaction_type: '',
+                transaction_value: 0
+              }}
+            />
+          </StoresProvider>
         }
       </div>
     </>

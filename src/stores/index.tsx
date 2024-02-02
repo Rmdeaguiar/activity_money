@@ -1,10 +1,10 @@
-import { createContext, useContext } from 'react';
+import { createContext, useContext, ReactNode } from 'react';
 import { useModal } from './modalStore';
+import { Dispatch, SetStateAction } from 'react';
 
 type StoresContextType = {
     modalStore: {
-        modalIndex: number | null,
-        setModalIndex: React.Dispatch<React.SetStateAction<number | null>>,
+      
     }
 }
 const storesCtx = createContext<StoresContextType | null>(null);
@@ -13,7 +13,7 @@ export function useStores() {
     return useContext(storesCtx);
 }
 
-export function StoresProvider({ children }: { children: React.ReactNode }) {
+export function StoresProvider({ children }: { children: ReactNode }) {
 
     const modalStore = useModal();
 

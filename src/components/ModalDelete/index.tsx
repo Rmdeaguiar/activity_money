@@ -2,6 +2,7 @@ import './styles.scss';
 import { Dispatch, SetStateAction } from 'react';
 import api from '../../services/api';
 import { getItem } from '../../utils/storage';
+import { useModal } from '../../stores/modalStore';
 
 type ModalDeleteProps = {
   modalIndex: number | null
@@ -11,6 +12,7 @@ type ModalDeleteProps = {
 function ModalDelete({ modalIndex, setModalDelete }: ModalDeleteProps) {
   const token = getItem('token');
 
+  const { loadIncome } = useModal();
 
   const handleDeleteTransaction = async () => {
     const response = await api.delete(`/transaction/${modalIndex}`,
@@ -22,6 +24,7 @@ function ModalDelete({ modalIndex, setModalDelete }: ModalDeleteProps) {
         }
       });
     setModalDelete(false);
+    loadIncome(token!)
   }
 
   return (

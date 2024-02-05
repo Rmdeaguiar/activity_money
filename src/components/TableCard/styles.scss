@@ -7,6 +7,16 @@
     justify-content: center;
     gap: 10px;
 
+    .filter-icons {
+        padding-right: 75px;
+        color: silver;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+        margin-left: auto;
+    }
+
     .header-table,
     .main-table {
         display: flex;

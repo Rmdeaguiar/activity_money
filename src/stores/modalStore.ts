@@ -3,8 +3,6 @@ import api from '../services/api';
 import { Transaction } from '../types/Transaction';
 
 export function useModal() {
-    const [modalTeste, setModalTeste] = useState(false);
-
     const [credit, setCredit] = useState(0);
     const [debit, setDebit] = useState(0);
     const [transactions, setTransactions] = useState<Transaction[]>([])
@@ -47,6 +45,7 @@ export function useModal() {
         credit,
         debit,
         transactions,
+        setTransactions,
         loadIncome
     };
 }

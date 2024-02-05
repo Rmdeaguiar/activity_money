@@ -3,15 +3,14 @@ import SignUp from './pages/signup';
 import Login from './pages/login';
 import { Routes, Route, Outlet, Navigate } from 'react-router-dom'
 import { getItem } from './utils/storage'
-import { StoresProvider } from './stores';
 
 interface ProtectedRoutesProps {
     redirectTo: string;
 }
 
 function ProtectedRoutes({ redirectTo }: ProtectedRoutesProps) {
-    //const isAuthenticated = getItem('token');
-    const isAuthenticated = true
+    const isAuthenticated = getItem('token');
+    //const isAuthenticated = true
     return isAuthenticated ? <Outlet /> : <Navigate to={redirectTo} />
 }
 

@@ -1,6 +1,5 @@
 import { createContext, useContext, ReactNode } from 'react';
 import { useModal } from './modalStore';
-import { Dispatch, SetStateAction } from 'react';
 
 type StoresContextType = {
     modalStore: {

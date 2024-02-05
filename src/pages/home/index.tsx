@@ -1,27 +1,18 @@
 import './styles.scss';
 import { useState, useEffect } from 'react';
 import { getItem } from '../../utils/storage';
-import api from '../../services/api';
 import IncomeCard from '../../components/IncomeCard';
 import TableCard from '../../components/TableCard';
 import ModalTransaction from '../../components/ModalTransaction';
 import Header from '../../components/Header';
-import { Transaction } from '../../types/Transaction';
 import { useModal } from '../../stores/modalStore';
 import { StoresProvider } from '../../stores';
 
-
-
 function Home() {
 
-  const { loadIncome, credit, debit, transactions } = useModal();
-
   const token = getItem('token');
+  const { loadIncome, credit, debit, transactions } = useModal();
   const [modal, setModal] = useState(false);
-  // const [credit, setCredit] = useState(0);
-  // const [debit, setDebit] = useState(0);
-  // const [transactions, setTransactions] = useState<Transaction[]>([])
-  const [transaction, setTransaction] = useState<Transaction>()
 
   useEffect(() => {
     if(token) loadIncome(token!);

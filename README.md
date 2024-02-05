@@ -11,7 +11,6 @@ Aplicação onde é possível realizar cadastro e login, para então:
 
 Ainda faltando as seguintes funcionalidades:
 
-- Filtro de transações
 - Propagação de estados mais eficaz
 - Verificações de inserção de dados para métodos http
 - Refatoração

@@ -1,5 +1,4 @@
 import Home from './pages/home';
-import SignUp from './pages/signup';
 import Login from './pages/login';
 import { Routes, Route, Outlet, Navigate } from 'react-router-dom'
 import { getItem } from './utils/storage'
@@ -17,9 +16,7 @@ function ProtectedRoutes({ redirectTo }: ProtectedRoutesProps) {
 function MainRoutes() {
     return (
         <Routes>
-            <Route path="/" element={<Login />} />
-            <Route path="/signup" element={<SignUp />} />
-            
+            <Route path="/" element={<Login />} />            
             <Route element={<ProtectedRoutes redirectTo='/' />}>
                 <Route path="/home" element={<Home />} />
             </Route>

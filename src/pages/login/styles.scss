@@ -24,6 +24,7 @@
         border-radius: 10px;
         padding: 30px;
         width: 20%;
+        position: relative;
 
         label {
             font-weight: 500;
@@ -51,6 +52,13 @@
                 opacity: 0.5;
                 transition: all 500ms;
             }
+        }
+
+        span {
+            font-size: 12px;
+            color: red;
+            position: absolute;
+            bottom: 8px;
         }
     }
 

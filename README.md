@@ -8,9 +8,3 @@ Aplicação onde é possível realizar cadastro e login, para então:
 - Visualizar tabela com o resumo de transações
 - Filtrar transações por tipo
 - Obter resumo por crédito, débito e total
-
-Ainda faltando as seguintes funcionalidades:
-
-- Propagação de estados mais eficaz
-- Verificações de inserção de dados para métodos http
-- Refatoração

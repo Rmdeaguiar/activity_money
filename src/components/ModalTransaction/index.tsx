@@ -22,6 +22,7 @@ function ModalTransaction({ modalType, transaction, setModal }: ModalProps) {
   const [amount, setAmount] = useState(0);
   const [date, setDate] = useState('');
   const [selectedOption, setSelectedOption] = useState('');
+  const [error, setError] = useState('');
 
   useEffect(() => {
     if (modalType === 'Nova transação') {
@@ -39,36 +40,44 @@ function ModalTransaction({ modalType, transaction, setModal }: ModalProps) {
   const handleTransaction = async (e: FormEvent) => {
 
     e.preventDefault();
-    if (modalType === 'Nova transação') {
-      const response = await api.post('/transaction', {
-        value: amount,
-        date,
-        type: selectedOption,
-        title
-      }, {
-        headers: {
-          'Authorization': `Bearer ${token}`,
-          'Content-Type': 'application/json',
-          'Access-Control-Allow-Origin': '*'
-        }
-      });
-      setModal(false);
 
-    } else {
-      const response = await api.put(`transaction/${transaction?.transaction_id}`, {
-        value: amount,
-        date,
-        type: selectedOption,
-        title
-      }, {
-        headers: {
-          'Authorization': `Bearer ${token}`,
-          'Content-Type': 'application/json',
-          'Access-Control-Allow-Origin': '*'
-        }
-      });
-      setModal(false);
-      loadIncome(token!);
+    try {
+
+
+      if (modalType === 'Nova transação') {
+        const response = await api.post('/transaction', {
+          value: amount,
+          date,
+          type: selectedOption,
+          title
+        }, {
+          headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': '*'
+          }
+        });
+        setModal(false);
+
+      } else {
+        const response = await api.put(`transaction/${transaction?.transaction_id}`, {
+          value: amount,
+          date,
+          type: selectedOption,
+          title
+        }, {
+          headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': '*'
+          }
+        });
+        setModal(false);
+        loadIncome(token!);
+      }
+
+    } catch (error: any) {
+      setError(error.response.data.mensagem);
     }
 
   }
@@ -103,6 +112,7 @@ function ModalTransaction({ modalType, transaction, setModal }: ModalProps) {
           <button className='green-btn'>Confirmar</button>
           <button type='button' className='red-btn' onClick={() => handleClearForm()}>Cancelar</button>
         </div>
+        <span className='span-error'>{error}</span>
       </form>
     </div>
   );

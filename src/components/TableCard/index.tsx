@@ -1,5 +1,5 @@
 import './styles.scss';
-import { useState, useEffect, Dispatch } from 'react';
+import { useState } from 'react';
 import { Transaction } from '../../types/Transaction';
 import { format } from 'date-fns';
 import { FaTrashAlt } from "react-icons/fa";

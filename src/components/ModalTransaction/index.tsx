@@ -38,12 +38,9 @@ function ModalTransaction({ modalType, transaction, setModal }: ModalProps) {
   }, []);
 
   const handleTransaction = async (e: FormEvent) => {
-
     e.preventDefault();
 
     try {
-
-
       if (modalType === 'Nova transação') {
         const response = await api.post('/transaction', {
           value: amount,

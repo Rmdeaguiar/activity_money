@@ -20,7 +20,6 @@ function Home() {
     if(token) loadIncome(token!);
   }, [transactions]);
 
-
   return (
     <>
       <Header />

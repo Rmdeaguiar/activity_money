@@ -1,7 +1,6 @@
 import './styles.scss';
 import Header from '../../components/Header';
 import { FormEvent, useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import api from '../../services/api';
 import { setItem, getItem } from '../../utils/storage';
 import { useNavigate } from 'react-router-dom';
@@ -77,9 +76,7 @@ function Login() {
           <button className='green-btn'>Confirmar</button>
           {error && <span>{error}</span>}
         </form>
-        {/* <Link to={'/signup'}>Ainda não tem cadastro? Clique aqui</Link> */}
         <a onClick={() => setSignup(!signup)}>{signup ? 'Já tem cadastro? Clique aqui' : 'Ainda não tem cadastro? Clique aqui'}</a>
-
       </div>
     </>
 

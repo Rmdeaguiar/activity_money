@@ -70,9 +70,9 @@ function Login() {
         <h1>{signup ? 'Cadastre-se' : 'Login'}</h1>
         <form onSubmit={!signup ? handleLogin : handleSignup}>
           <label htmlFor='username'>Username</label>
-          <input name='username' type='text' value={username} onChange={(e) => setUsername(e.target.value)} />
+          <input data-testid="input-username" name='username' type='text' value={username} onChange={(e) => setUsername(e.target.value)} />
           <label htmlFor='password'>Senha</label>
-          <input name='password' type='password' value={password} onChange={(e) => setPassword(e.target.value)} />
+          <input data-testid="input-password" name='password' type='password' value={password} onChange={(e) => setPassword(e.target.value)} />
           <button className='green-btn'>Confirmar</button>
           {error && <span>{error}</span>}
         </form>

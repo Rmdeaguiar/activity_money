@@ -9,6 +9,8 @@ interface ProtectedRoutesProps {
 
 function ProtectedRoutes({ redirectTo }: ProtectedRoutesProps) {
     const isAuthenticated = getItem('token');
+    //const isAuthenticated = true;
+
     return isAuthenticated ? <Outlet /> : <Navigate to={redirectTo} />
 }
 

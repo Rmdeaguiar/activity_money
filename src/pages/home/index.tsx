@@ -14,18 +14,19 @@ function Home() {
   const token = getItem('token');
   const { loadIncome, credit, debit, transactions } = useModal();
   const [modal, setModal] = useState(false);
-  const username = getItem('username');
-
+  //const username = getItem('username');
+  const [username, setUsername] = useState(getItem('username') || '');
+  
   useEffect(() => {
     if(token) loadIncome(token!);
-  }, [transactions]);
+  }, []);
 
   return (
     <>
       <Header />
       <div className="container-home">
       <div className='container-user'>
-        <h2>Seja bem vindo, {username!.toLocaleUpperCase()}</h2>
+        <h2>Seja bem vindo, {username.toLocaleUpperCase()}</h2>
       <Link to={'/'} onClick={()=>clear()}>Sair</Link>
       </div>
         <button onClick={() => setModal(true)}>Nova transação</button>

@@ -24,17 +24,25 @@ function Login() {
     e.preventDefault();
     setError('');
 
+    if(!username || !password) {
+      setError('Todos os campos são obrigatórios');
+      return
+    }
     try {
       const response = await api.post('/login', {
         username,
         password
       });
 
+
+      if(response.status == 200){
       const { token, user } = response.data;
       setItem('token', token);
       setItem('userId', user.id);
       setItem('username', user.username);
       navigate('/home')
+      return;
+      }
 
     } catch (error: any) {
       setError(error.response.data);

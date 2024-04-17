@@ -64,7 +64,7 @@ function TableCard({ transactions }: TableCardProps) {
       <tr>{format(new Date(transaction.transaction_date), "dd/MM/yyyy")}</tr>
       <div className='table-icons'>
         <div className='table-icon'>
-          <GoPencil size={15} onClick={() => handleEditTransaction(transaction)} />
+          <GoPencil data-testid='edit-transaction' size={15} onClick={() => handleEditTransaction(transaction)} />
         </div>
         <div className='table-icon'>
           <FaTrashAlt size={15} onClick={() => handleOpenModalDelete(transaction.transaction_id)} />

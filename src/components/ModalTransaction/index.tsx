@@ -94,16 +94,16 @@ function ModalTransaction({ modalType, transaction, setModal }: ModalProps) {
       </div>
       <form onSubmit={handleTransaction}>
         <label htmlFor='title'>Título</label>
-        <input name='title' type='text' value={title} onChange={(e) => setTitle(e.target.value)} />
+        <input data-testid="input-title" name='title' type='text' value={title} onChange={(e) => setTitle(e.target.value)} />
         <label htmlFor='value'>Valor</label>
-        <input name='value' type='number' value={amount} onChange={(e) => setAmount(Number(e.target.value))} />
+        <input data-testid="input-value" name='value' type='number' value={amount} onChange={(e) => setAmount(Number(e.target.value))} />
         <label htmlFor='date'>Data</label>
-        <input name='date' type='date' value={date} onChange={(e) => setDate(e.target.value)} />
+        <input data-testid="input-date" name='date' type='date' value={date} onChange={(e) => setDate(e.target.value)} />
         <div className='form-check'>
           <label htmlFor='type-income'>Entrada</label>
-          <input name='type-income' value='entrada' type='radio' checked={selectedOption === 'entrada'} onChange={(e) => setSelectedOption(e.target.value)} />
+          <input data-testid="input-entry" name='type-income' value='entrada' type='radio' checked={selectedOption === 'entrada'} onChange={(e) => setSelectedOption(e.target.value)} />
           <label htmlFor='type-income'>Saída</label>
-          <input name='type-income' value='saída' type='radio' checked={selectedOption === 'saída'} onChange={(e) => setSelectedOption(e.target.value)} />
+          <input data-testid="input-out" name='type-income' value='saída' type='radio' checked={selectedOption === 'saída'} onChange={(e) => setSelectedOption(e.target.value)} />
         </div>
         <div className='form-buttons'>
           <button className='green-btn'>Confirmar</button>

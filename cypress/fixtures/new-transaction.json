@@ -1,0 +1,11 @@
+{
+	"value": 15000,
+	"date": "10-11-2023",
+	"type": "entrada",
+	"title": "salário",
+	"user": {
+		"id": 1,
+		"username": "raguiar"
+	},
+	"id": 1
+}

@@ -64,10 +64,10 @@ function TableCard({ transactions }: TableCardProps) {
       <tr>{format(new Date(transaction.transaction_date), "dd/MM/yyyy")}</tr>
       <div className='table-icons'>
         <div className='table-icon'>
-          <GoPencil data-testid='edit-transaction' size={15} onClick={() => handleEditTransaction(transaction)} />
+          <GoPencil size={15} onClick={() => handleEditTransaction(transaction)} />
         </div>
         <div className='table-icon'>
-          <FaTrashAlt size={15} onClick={() => handleOpenModalDelete(transaction.transaction_id)} />
+            <FaTrashAlt data-testid="modal-delete" size={15} onClick={() => handleOpenModalDelete(transaction.transaction_id)} />
           {modalDelete && transaction.transaction_id === currentTransaction &&
             <ModalDelete
               modalIndex={modalIndex}
@@ -83,8 +83,8 @@ function TableCard({ transactions }: TableCardProps) {
     <div className="table-card">
       <div className='filter-icons'>
         <FaFilterCircleDollar color='green' size={20} cursor={'pointer'} onClick={() => handleCreditTransactions(transactions)} />
-        <FaFilterCircleXmark color='red' size={20} cursor={'pointer'} onClick={() => handleDebitTransactions(transactions)}/>
-        <TbFilterCancel color='white' size={20} cursor={'pointer'} onClick={() => handleClearFilters(transactions)}/>
+        <FaFilterCircleXmark color='red' size={20} cursor={'pointer'} onClick={() => handleDebitTransactions(transactions)} />
+        <TbFilterCancel color='white' size={20} cursor={'pointer'} onClick={() => handleClearFilters(transactions)} />
       </div>
       <thead className='header-table'>
         <th>Título</th>

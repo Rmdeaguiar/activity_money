@@ -9,4 +9,4 @@ Aplicação onde é possível realizar cadastro e login, para então:
 - Filtrar transações por tipo
 - Obter resumo por crédito, débito e total
 
-Ela foi construída utilizado React e TypeScript, e testada (em desenvolvimento) através do Cypress.
+Ela foi construída utilizado React e TypeScript, e testada (em desenvolvimento) através do Cypress e Jest.
